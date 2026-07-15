@@ -1,56 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Laundry Market Dashboard</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Laundry Industry Intelligence Dashboard</title>
 
 <style>
 
-body {
-    font-family: Arial, sans-serif;
+body{
     margin:0;
-    background:#ffffff;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f5f5;
 }
 
-.ticker {
-    width:100%;
-    overflow:hidden;
-    background:#eeeeee;
-    padding:12px 0;
+header{
+
+    background:white;
+    padding:15px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+
 }
 
-.move {
-    display:inline-block;
-    white-space:nowrap;
-    animation:kay 18s linear infinite;
-    font-size:18px;
+h1{
+
+    margin:15px 0;
+    text-align:center;
+    font-size:34px;
+
 }
 
-@keyframes kay {
-    from {
-        transform:translateX(100%);
-    }
-    to {
-        transform:translateX(-100%);
-    }
+.content{
+
+    width:95%;
+    margin:auto;
+
 }
 
-.dashboard {
+.chart{
+
+    margin-top:30px;
     display:flex;
     justify-content:center;
-    gap:20px;
-    margin-top:30px;
+
 }
 
-.card {
-    border:1px solid #ddd;
-    border-radius:10px;
-    padding:10px;
+.card{
+
+    width:1000px;
     background:white;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
-}
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
 
-h1 {
-    text-align:center;
 }
 
 </style>
@@ -59,88 +63,97 @@ h1 {
 
 <body>
 
-<div class="tradingview-widget-container">
+<header>
 
-  <div class="tradingview-widget-container__widget"></div>
-
-  <script type="text/javascript"
-  src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-  async>
-  {
-    "symbols": [
-
-      {
-        "proName": "FX:USDTRY",
-        "title": "USD/TRY"
-      },
-
-      {
-        "proName": "FX:EURTRY",
-        "title": "EUR/TRY"
-      },
-
-      {
-        "proName": "TVC:GOLD",
-        "title": "Gold"
-      },
-
-      {
-        "proName": "TVC:UKOIL",
-        "title": "Brent Oil"
-      },
-
-      {
-        "proName": "COMEX:HG1!",
-        "title": "Copper"
-      },
-
-      {
-        "proName": "FX:EURUSD",
-        "title": "EUR/USD"
-      }
-
-    ],
-
-    "showSymbolLogo": true,
-    "displayMode": "adaptive",
-    "colorTheme": "light",
-    "locale": "en"
-
-  }
-  </script>
-
-</div>
-
-</div>
-</div>
-
-
-<h1>
-Laundry Industry Intelligence Dashboard
-</h1>
-
-
-<div class="dashboard">
-<div class="dashboard">
-
-<div class="card">
+<!-- LIVE MARKET TICKER -->
 
 <div class="tradingview-widget-container">
 
 <div class="tradingview-widget-container__widget"></div>
 
-<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+<script
+type="text/javascript"
+src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+async>
+
 {
-  "symbol": "FX:USDTRY",
-  "width": 350,
-  "height": 220,
-  "locale": "tr",
-  "dateRange": "1D",
-  "colorTheme": "light",
-  "trendLineColor": "rgba(41, 98, 255, 1)",
-  "underLineColor": "rgba(41, 98, 255, 0.3)",
-  "isTransparent": false
+"symbols":[
+
+{"proName":"FX:USDTRY","title":"USD/TRY"},
+{"proName":"FX:EURTRY","title":"EUR/TRY"},
+{"proName":"FX:EURUSD","title":"EUR/USD"},
+{"proName":"TVC:GOLD","title":"Gold"},
+{"proName":"TVC:SILVER","title":"Silver"},
+{"proName":"TVC:UKOIL","title":"Brent"},
+{"proName":"COMEX:HG1!","title":"Copper"}
+
+],
+
+"showSymbolLogo":true,
+"colorTheme":"light",
+"isTransparent":false,
+"displayMode":"adaptive",
+"locale":"en"
+
 }
+
+</script>
+
+</div>
+
+</header>
+
+<h1>
+
+Laundry Industry Intelligence Dashboard
+
+</h1>
+
+<div class="content">
+
+<div class="chart">
+
+<div class="card">
+
+<div class="tradingview-widget-container">
+
+<div id="tv_chart"></div>
+
+<script
+type="text/javascript"
+src="https://s3.tradingview.com/tv.js">
+</script>
+
+<script>
+
+new TradingView.widget({
+
+"autosize":true,
+
+"symbol":"FX:USDTRY",
+
+"interval":"30",
+
+"timezone":"Europe/Istanbul",
+
+"theme":"light",
+
+"style":"1",
+
+"locale":"en",
+
+"toolbar_bg":"#f1f3f6",
+
+"enable_publishing":false,
+
+"hide_top_toolbar":false,
+
+"allow_symbol_change":true,
+
+"container_id":"tv_chart"
+
+});
+
 </script>
 
 </div>
@@ -149,20 +162,7 @@ Laundry Industry Intelligence Dashboard
 
 </div>
 
-<div class="card">
-
-<iframe
-frameborder="0"
-width="350"
-height="220"
-src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?locale=tr#%7B%22symbol%22%3A%22FX%3AUSDTRY%22%2C%22width%22%3A%22350%22%2C%22height%22%3A%22220%22%2C%22dateRange%22%3A%221D%22%2C%22colorTheme%22%3A%22light%22%2C%22trendLineColor%22%3A%22rgba(41%2C%2098%2C%20255%2C%201)%22%2C%22underLineColor%22%3A%22rgba(41%2C%2098%2C%20255%2C%200.3)%22%2C%22isTransparent%22%3Afalse%2C%22autosize%22%3Afalse%7D">
-</iframe>
-
 </div>
-
-
-</div>
-
 
 </body>
 </html>
