@@ -64,51 +64,23 @@ h1{
 <body>
 
 <header>
+<header>
 
-<!-- LIVE MARKET TICKER -->
-
-<div class="tradingview-widget-container">
-
-<div class="tradingview-widget-container__widget"></div>
-
-<script
-type="text/javascript"
-src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-async>
-{
-"symbols":[
-
-{"proName":"FX:USDTRY","title":"💵 USD/TRY"},
-
-{"proName":"FX:EURTRY","title":"💶 EUR/TRY"},
-
-{"proName":"FX:EURUSD","title":"💱 EUR/USD"},
-
-{"proName":"TVC:UKOIL","title":"🛢 Brent Oil"},
-
-{"proName":"COMEX:HG1!","title":"🔶 Copper"},
-
-{"proName":"CAPITALCOM:ALUMINIUM","title":"⚪ Aluminum"},
-
-{"proName":"CAPITALCOM:NICKEL","title":"🟢 Nickel"},
-
-{"proName":"SGX:FEF1!","title":"⚫ Iron Ore"},
-
-{"proName":"NYMEX:HRC1!","title":"🏭 HRC Steel"}
-
-],
-
-"showSymbolLogo":true,
-"colorTheme":"light",
-"isTransparent":false,
-"displayMode":"adaptive",
-"locale":"en"
-
-}
+<script type="module"
+src="https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js">
 </script>
 
-</div>
+<tv-ticker-tape
+symbols="
+FX:USDTRY,
+FX:EURTRY,
+FX:EURUSD,
+CMCMARKETS:GOLD,
+FX:COPPER,
+FX:BRENT">
+</tv-ticker-tape>
 
+</header>
 </header>
 
 <h1>
